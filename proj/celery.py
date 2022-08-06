@@ -23,7 +23,7 @@ def run_sky(cluster_name: str) -> str:
         sky.Task(
             setup=SETUP_CMD,
             run=RUN_CMD,
-            num_nodes=1).set_resources(sky.Resources(sky.GCP()))
+            num_nodes=1).set_resources(sky.Resources(sky.AWS()))
 
     sky.launch(dag, cluster_name=cluster_name)
     return 'success'

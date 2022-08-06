@@ -9,6 +9,14 @@
 - run.py
 ```
 
+## Install Dependencies
+```
+conda create -n skypilot-celery python=3.8
+conda activate skypilot-celery
+pip install "celery[redis]"
+pip install "skypilot[aws]"
+```
+
 ## Execute the SkyPilot task
 1. Start redis service with `docker run -d -p 6379:6379 redis`.
 2. Start the celery worker with `celery -A proj worker --logfile=/dev/null` in terminal 1.
