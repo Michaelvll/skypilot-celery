@@ -2,11 +2,12 @@
 
 
 ## File hierarchy
+```
 - proj/
     |- __init__.py
     |- celery.py
 - run.py
-
+```
 
 ## Execute the SkyPilot task
 1. Start the celery worker with `celery -A proj worker --logfile=/dev/null` in terminal 1.
