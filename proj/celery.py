@@ -1,6 +1,7 @@
 from __future__ import absolute_import
-from celery import Celery
+import textwrap
 
+from celery import Celery
 import sky
 
 
@@ -19,19 +20,18 @@ SETUP_CMD = """\
     fi
     """
 
-RUN_CMD = """\
+RUN_CMD = textwrap.dedent("""\
     echo start training
     conda activate myenv
     python -u - <<EOF
-        import time
-        import tqdm
-        print('Start training for image {image_id}')
-        # for i in tqdm.tqdm(range(120)):
-        for i in tqdm.tqdm(range(10)):
-            # 2 minutes training
-            time.sleep(1)
+    import time
+    import tqdm
+    print('Start training for image {image_id}')
+    for i in tqdm.tqdm(range(120)):
+        # 2 minutes training
+        time.sleep(1)
     EOF
-    """
+    """)
 
 
 @app.task
